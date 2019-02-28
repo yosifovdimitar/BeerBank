@@ -1,0 +1,108 @@
+html {
+    font-family: arial, sans-serif;
+}
+
+* {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    letter-spacing: 0.03em;
+}
+
+bear-bank-main {
+    display: grid;
+    grid-template-rows: 0.38fr 1fr;
+}
+
+bb-main-header {
+    grid-row: 1;
+    background: #f79400;
+    border-bottom: #f7ddc4;
+    border-bottom-style: inset;
+    z-index: 0;
+
+    display: grid;
+    grid-template-rows: min-content 0.12fr repeat(2, min-content);
+    grid-gap: 1vmin;
+}
+
+bb-main-list-container {
+    grid-row: 2;
+    width: 100%;
+    background: #f8f8f8;
+    display: grid;
+    overflow-y: auto;
+}
+
+bb-item-element {
+    height: 21vmax;
+    background: white;
+    box-shadow: 0px 0px 20px 0px #a9a9a98a;
+    border-radius: 4px;
+}
+
+bb-nav-menu {
+    grid-row: 1;
+}
+
+.bb-nav-menu-container {
+    display: grid;
+    padding-top: 1vh;
+    padding-right: 0.7vw;
+    grid-gap: 1.5vw;
+    grid-template-columns: 1fr min-content min-content;
+}
+
+.bb-home-button {
+    color: white;
+    grid-column: 2;
+    cursor: pointer;
+}
+
+.bb-favorite-button {
+    color: white;
+    grid-column: 3;
+    cursor: pointer;
+}
+
+.bb-list-container {
+    padding: 12vh 20vw;
+    display: grid;
+    grid-gap: 0.5vmin;
+    height: 0vh;
+}
+
+.bb-list-elements {
+    display: grid;
+    grid-gap: 1vw;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    padding-bottom: 5vh;
+}
+
+.the-beer-bank-title {
+    grid-row: 3;
+    justify-self: center;
+    color: white;
+    font-size: calc(6px + 2vw);
+    font-weight: bold;
+}
+
+.the-beer-bank-subtitle {
+    grid-row: 4;
+    justify-self: center;
+    color: white;
+    font-size: calc(6px + 0.7vw);
+}
+
+.search-bar-input {
+    grid-row: 5;
+    justify-self: center;
+    font-size: calc(6px + 0.7vw);
+    width: 33vw;
+    height: 5vh;
+    padding-left: 0.7vmin;
+
+    border-style: solid;
+    border-color: #f7ddc4;
+}
