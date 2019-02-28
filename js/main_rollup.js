@@ -1,0 +1,1 @@
+!function(){"use strict";customElements.define("bear-bank-main",class extends HTMLElement{constructor(){super()}connectedCallback(){this.innerHTML=this.html_constructor()}html_constructor(){return"<div>Hello World!</div>"}})}();
