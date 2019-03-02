@@ -16,7 +16,6 @@ class bb_nav_menu extends HTMLElement {
     }
     
     favorite_button_clicked() {
-        console.log("favorite-button-clicked");
     }
 
     // Navigation menu

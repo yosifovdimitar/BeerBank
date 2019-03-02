@@ -13,6 +13,19 @@ body {
     height: 100%;
 }
 
+.hide-item {
+    display: none;
+}
+
+.show-item {
+    display: unset;
+}
+
+.show-item-grid {
+    display: grid;
+}
+
+
 input {
     font-size: calc(6px + 0.7vw);
 }
@@ -63,6 +76,7 @@ bb-item-element {
     font-size: 1.6vmax;
     padding-right: 0.6vmax;
     cursor: pointer;
+    user-select: none;
 }
 
 .bb-element-container {
@@ -154,7 +168,7 @@ bb-item-element {
     font-size: calc(6px + 0.7vw);
 }
 
-.search-bar-input {
+.bb-search-bar-input {
     grid-row: 5;
     justify-self: center;
     font-size: calc(6px + 0.7vw);

@@ -34,7 +34,6 @@ class bb_main_list_container extends HTMLElement {
             new_element.setAttribute("abv", element.abv);
             new_element.setAttribute("ebc", element.ebc);
             this.list_elements.appendChild(new_element);
-            console.log(element);
         });
     }
 
