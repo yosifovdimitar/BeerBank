@@ -6,8 +6,19 @@ class bb_nav_menu extends HTMLElement {
 
     connectedCallback() {
         this.innerHTML = this.html_constructor();
+        this.querySelector("#home-button").addEventListener("pointerdown", event => this.home_button_clicked());
+        this.querySelector("#favorite-button").addEventListener("pointerdown", event => this.favorite_button_clicked());
+    }
+
+
+    home_button_clicked() {
+        location.reload(true);
     }
     
+    favorite_button_clicked() {
+        console.log("favorite-button-clicked");
+    }
+
     // Navigation menu
     html_constructor() {
         return `<div class="bb-nav-menu-container">
