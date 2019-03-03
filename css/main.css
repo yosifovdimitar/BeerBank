@@ -55,6 +55,13 @@ bb-main-list-container {
     overflow-y: auto;
 }
 
+bb-favorites-list {
+    grid-row: 2;
+    width: 100%;
+    background: #f8f8f8;
+    overflow-y: auto;
+}
+
 bb-nav-menu {
     grid-row: 1;
 }
@@ -70,6 +77,35 @@ bb-item-element {
     grid-template-rows: min-content 1fr;
 }
 
+bb-item-element:hover {
+    box-shadow: 0px 0px 20px 0px #848484;
+}
+
+.no-favorites-text {
+    color: #f79400;
+    font-weight: bold;
+}
+
+.bb-svg-star {
+    width: 2.7vmax;
+    height: 5vmax;
+    stroke: black;
+    fill: white;
+    stroke-width: 0.7vmax;
+}
+
+.bb-svg-star-selected {
+    width: 2.7vmax;
+    height: 5vmax;
+    stroke: #f79400;
+    fill: #f79400;
+    stroke-width: 0.7vmax;
+}
+
+.bb-svg-star:hover {
+    stroke: #f79400;
+}
+
 .bb-element-favorite-button {
     grid-row: 1/3;
     grid-column: 2;
@@ -77,6 +113,7 @@ bb-item-element {
     padding-right: 0.6vmax;
     cursor: pointer;
     user-select: none;
+    justify-self: self-end;
 }
 
 .bb-element-container {
@@ -159,6 +196,21 @@ bb-item-element {
     color: white;
     font-size: calc(6px + 2vw);
     font-weight: bold;
+}
+
+.bb-favorites-list {
+    grid-row: 3;
+    font-size: calc(6px + 2vw);
+    justify-self: center;
+    font-weight: bold;
+    color: white;
+}
+
+.bb-favorites-subtitle {
+    grid-row: 4;
+    font-size: calc(6px + 0.7vw);
+    justify-self: center;
+    color: white;
 }
 
 .the-beer-bank-subtitle {

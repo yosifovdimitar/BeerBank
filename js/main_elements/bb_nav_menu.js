@@ -1,4 +1,4 @@
-class bb_nav_menu extends HTMLElement {
+export class bb_nav_menu extends HTMLElement {
 
     constructor() {
         super();
@@ -15,7 +15,15 @@ class bb_nav_menu extends HTMLElement {
         location.reload(true);
     }
     
+    // Sends a message in order to hide or show different elements and transform the view to Favorites page.
     favorite_button_clicked() {
+        this.dispatchEvent(new CustomEvent('bb-favorite-button',
+        {
+            detail: {
+                action: "favorite-button-clicked"
+            },
+            bubble: true, composed: true
+        }));
     }
 
     // Navigation menu
