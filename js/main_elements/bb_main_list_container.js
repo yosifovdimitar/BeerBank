@@ -121,12 +121,14 @@ export class bb_main_list_container extends HTMLElement {
             let new_element = document.createElement("bb-item-element");
             new_element.setAttribute("id", element.id);
             new_element.setAttribute("name", element.name);
+            new_element.setAttribute("description", element.description);
             new_element.setAttribute("tagline", element.tagline);
             new_element.setAttribute("food-pairing", element.food_pairing);
             new_element.setAttribute("image-url", element.image_url);
             new_element.setAttribute("ibu", element.ibu);
             new_element.setAttribute("abv", element.abv);
             new_element.setAttribute("ebc", element.ebc);
+        
             this.list_elements.appendChild(new_element);
         });
     }

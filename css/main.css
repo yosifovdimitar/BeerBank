@@ -1,6 +1,7 @@
 html {
     font-family: arial, sans-serif;
     height: 100%;
+    background: #b8b8b8;
 }
 
 * {
@@ -27,7 +28,7 @@ body {
 
 
 input {
-    font-size: calc(6px + 0.7vw);
+    font-size: 2vmin;
 }
 
 bear-bank-main {
@@ -68,8 +69,8 @@ bb-nav-menu {
 
 bb-item-element {
     background: white;
-    box-shadow: 0px 0px 20px 0px #a9a9a98a;
-    border-radius: 4px;
+    box-shadow: 0px 0px 3vmin 0px #a9a9a98a;
+    border-radius: 0.7vmin;
     height: 20vmax;
     width: 18.1vmax;
     margin: 0.7vmax;
@@ -78,12 +79,171 @@ bb-item-element {
 }
 
 bb-item-element:hover {
-    box-shadow: 0px 0px 20px 0px #848484;
+    box-shadow: 0px 0px 3vmin 0px #848484;
+}
+
+.bb-detailed-display-shadow {
+    position: absolute;
+    background: #00000042;
+    top:0%;
+    width: 100%;
+    height: 100%;
+}
+
+.bb-detailed-display-close {
+    cursor: pointer;
+    user-select: none;
+    padding-right: 1vmin;
+    font-size: 1.4vmax;
+    color: #b9bbc2;
+}
+
+.bb-detailed-item-tagline {
+    grid-row: 2;
+    font-size: 2.6vmin;
+}
+
+.bb-detailed-separator-line {
+    grid-row: 3;
+    background: #b33e9a;
+    width: 18%;
+    height: 1vmin;
+}
+
+.bb-item-specifics {
+    display: grid;
+    grid-row: 4;
+    grid-template-columns: repeat(3, max-content);
+    grid-gap: 2vmax;
+    font-weight: bold;
+    font-size: 2.3vmin;
+}
+
+.bb-detailed-item-description {
+    grid-row: 5;
+    font-size: 2.3vmin;
+}
+
+.bb-best-served-with {
+    grid-row: 6;
+    color: #7a7a7a;
+    font-weight: bold;
+    font-size: 2.5vmin;
+}
+
+.bb-item-ibu-container {
+    grid-column: 1;
+    color: #7a7a7a;
+}
+
+.bb-detailed-item-ibu {
+    float: right;
+    font-weight: normal;
+    color: #b9bbc2;
+}
+
+.bb-item-abv-container {
+    grid-column: 2;
+    color: #7a7a7a;
+}
+
+.bb-detailed-item-abv {
+    float: right;
+    font-weight: normal;
+    color: #b9bbc2;
+}
+
+.bb-item-ebc-container {
+    grid-column: 3;
+    color: #7a7a7a;
+}
+
+.bb-detailed-item-ebc {
+    float: right;
+    font-weight: normal;
+    color: #b9bbc2;
+}
+
+.bb-detailed-display-container {
+    display: grid;
+    grid-template-rows: min-content 1fr min-content min-content;
+    position: absolute;
+    background: white;
+    box-shadow: 0px 0px 3vmin 0px #848484;
+    border-radius: 0.5vmin;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    width: 64vw;
+    top: 10%;
+}
+
+.bb-detailed-display-close {
+    justify-self: end;
+}
+
+.bb-item-details-container {
+    display: grid;
+    grid-gap: 2vmin;
+    grid-row: 2;
+    grid-template-columns: 0.3fr 1fr;
+    grid-template-rows: repeat(6, min-content);
+    color: #b9bbc2;
+    padding-right: 2vmin;
+}
+
+.detailed-svg-photo-display {
+    height: 100%;
+    width: 100%;
+}
+
+.detailed-display-photo-container {
+    grid-column: 1;
+    grid-row: 1/12;
+    height: 52vmin;
+}
+
+.bb-detailed-item-name {
+    grid-column: 2;
+    grid-row: 1;
+    color: #f79400;
+    font-weight: bold;
+    font-size: 3.5vmin;
+}
+
+.bb-detailed-item-food-pairing {
+    grid-column: 2;
+    grid-row: 7;
+    padding-left: 6vmin;
+    font-size: 2.3vmin;
+}
+
+.bb-you-might-also-like {
+    color: #f79400;
+    font-weight: bold;
+    font-size: 2.5vmin;
+    padding-left: 3vmin;
+}
+
+.bb-item-recommendations-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.bb-item-element-selected {
+    box-shadow: 0px 0px 3vmin 0px #848484;
+}
+
+.bb-item-element-normal {
+    box-shadow: 0px 0px 3vmin 0px #a9a9a98a;
 }
 
 .no-favorites-text {
     color: #f79400;
     font-weight: bold;
+    font-size: 2vmin;
 }
 
 .bb-svg-star {
@@ -91,7 +251,7 @@ bb-item-element:hover {
     height: 5vmax;
     stroke: black;
     fill: white;
-    stroke-width: 0.7vmax;
+    stroke-width: 2%;
 }
 
 .bb-svg-star-selected {
@@ -99,7 +259,7 @@ bb-item-element:hover {
     height: 5vmax;
     stroke: #f79400;
     fill: #f79400;
-    stroke-width: 0.7vmax;
+    stroke-width: 2%;
 }
 
 .bb-svg-star:hover {
@@ -159,7 +319,7 @@ bb-item-element:hover {
     padding-top: 1vh;
     padding-right: 0.7vw;
     grid-gap: 1.5vw;
-    grid-template-columns: 1fr min-content min-content;
+    grid-template-columns: auto min-content min-content;
 }
 
 .bb-home-button {
@@ -167,7 +327,7 @@ bb-item-element:hover {
     grid-column: 2;
     cursor: pointer;
     user-select: none;
-    font-size: calc(6px + 0.7vw);
+    font-size: 1.2vmax;
 }
 
 .bb-favorite-button {
@@ -175,7 +335,7 @@ bb-item-element:hover {
     grid-column: 3;
     cursor: pointer;
     user-select: none;
-    font-size: calc(6px + 0.7vw);
+    font-size: 1.2vmax;
 }
 
 .bb-list-container {
@@ -194,13 +354,13 @@ bb-item-element:hover {
     grid-row: 3;
     justify-self: center;
     color: white;
-    font-size: calc(6px + 2vw);
+    font-size: 4.2vmin;
     font-weight: bold;
 }
 
 .bb-favorites-list {
     grid-row: 3;
-    font-size: calc(6px + 2vw);
+    font-size: 4.2vmin;
     justify-self: center;
     font-weight: bold;
     color: white;
@@ -208,7 +368,7 @@ bb-item-element:hover {
 
 .bb-favorites-subtitle {
     grid-row: 4;
-    font-size: calc(6px + 0.7vw);
+    font-size: 2vmin;
     justify-self: center;
     color: white;
 }
@@ -217,17 +377,17 @@ bb-item-element:hover {
     grid-row: 4;
     justify-self: center;
     color: white;
-    font-size: calc(6px + 0.7vw);
+    font-size: 2vmin;
 }
 
 .bb-search-bar-input {
     grid-row: 5;
     justify-self: center;
-    font-size: calc(6px + 0.7vw);
+    font-size: 1.2vmax;
     width: 33vw;
     height: 5vh;
     padding-left: 0.7vmin;
-
+    border-width: 0.4vmin;
     border-style: solid;
     border-color: #f7ddc4;
 }

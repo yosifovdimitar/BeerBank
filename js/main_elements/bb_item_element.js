@@ -2,9 +2,10 @@ export class bb_item_element extends HTMLElement {
 
     constructor() {
         super();
-        
+
         // Listens for and handles messages directed for any instance of the item.
         document.addEventListener(`bb-item-element`, this.handle_mbox_message.bind(this), true);
+        document.addEventListener(`bb-item-highlight`, this.item_highlight.bind(this), true);
     }
 
     connectedCallback() {
@@ -13,12 +14,18 @@ export class bb_item_element extends HTMLElement {
         this.innerHTML = this.html_constructor();
         this.item_id = this.getAttribute('id');
         this.item_name = this.getAttribute('name');
+        this.item_description = this.getAttribute('description');
         this.item_tagline = this.getAttribute('tagline');
         this.item_food_pairing = this.getAttribute('food-pairing');
         this.item_image = this.getAttribute('image-url');
         this.item_ibu = this.getAttribute('ibu');
         this.item_abv = this.getAttribute('abv');
         this.item_ebc = this.getAttribute('ebc');
+
+        // Used to determine how clicking on the item behaves, if the items is a recommendation.
+        this.item_mode = this.getAttribute('mode');
+
+        this.item_selected = false;
 
         // Checks if the item is in localStorage, in order to set the Star icon state.
         this.check_if_favorite();
@@ -28,7 +35,7 @@ export class bb_item_element extends HTMLElement {
         this.querySelector("#element-name").innerHTML = this.item_name;
         this.querySelector("#element-tagline").innerHTML = this.item_tagline;
         this.querySelector("#element-favorite-button").addEventListener("pointerdown", event => this.favorite_button_clicked());
-        this.addEventListener("pointerdown", event => this.element_clicked());
+        this.querySelector("#element-container").addEventListener("pointerdown", event => this.element_clicked());
     }
 
     // Checks if the message is for this particular instance.
@@ -38,7 +45,7 @@ export class bb_item_element extends HTMLElement {
         }
     }
 
-    
+
     // Carries out the action stored in the event. Changes the visuals of the Star icon.
     process_message(event) {
         switch (event.detail.action) {
@@ -56,7 +63,7 @@ export class bb_item_element extends HTMLElement {
                 break;
         }
     }
-    
+
     // Checks if the item is stored in localStorage as favorite.
     check_if_favorite() {
         if (localStorage.getItem(this.item_id)) {
@@ -65,8 +72,55 @@ export class bb_item_element extends HTMLElement {
         }
     }
 
-    // Displays detailed view of the item.
+    // Highlights the item and displays detailed view.
     element_clicked() {
+        // Checks if item is a recommendation and disables detailed display.
+        if(this.item_mode !== "recommendation") {
+        this.dispatchEvent(new CustomEvent('bb-item-highlight',
+            {
+                detail: {
+                    item_id: this.item_id,
+                    action: "element-clicked"
+                },
+                bubble: true, composed: true
+            }));
+
+            this.dispatchEvent(new CustomEvent('bb-detailed-display',
+            {
+                detail: {
+                    item_id: this.item_id,
+                    item_name: this.item_name,
+                    item_tagline: this.item_tagline,
+                    item_description: this.item_description,
+                    item_food_pairing: this.item_food_pairing,
+                    item_image: this.item_image,
+                    item_ibu: this.item_ibu,
+                    item_abv: this.item_abv,
+                    item_ebc: this.item_ebc,
+                    action: "element-clicked"
+                },
+                bubble: true, composed: true
+            }));
+        }
+    }
+
+    // Handles item highlighting
+    item_highlight() {
+        if (this.item_id === event.detail.item_id) {
+            if (this.item_selected === true) {
+                this.classList.remove("bb-item-element-selected");
+                this.classList.add("bb-item-element-normal");
+                this.item_selected = false;
+            } else {
+                this.classList.remove("bb-item-element-normal");
+                this.classList.add("bb-item-element-selected");
+                this.item_selected = true;
+            }
+        } else {
+            this.classList.remove("bb-item-element-selected");
+            this.classList.add("bb-item-element-normal");
+            this.item_selected = false;
+        }
     }
 
     // Saves or removes the item from localStorage. 
@@ -113,7 +167,7 @@ export class bb_item_element extends HTMLElement {
     html_constructor() {
         return `
         ${this.html_favorite_button()}
-        <div class="bb-element-container">
+        <div id="element-container" class="bb-element-container">
         ${this.html_element_photo()}
         ${this.html_element_name()}
         ${this.html_element_tagline()}
