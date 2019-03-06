@@ -5,7 +5,7 @@ import minify from 'rollup-plugin-minify-es';
 export default {
     input: 'js/main.js',
     output: { 
-    file: 'js/main_rollup_bundle.js',
+    file: 'js/main_rollup.js',
     format: 'iife',
     name: 'beer_bank_main'
     },
