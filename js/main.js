@@ -4,7 +4,7 @@ import { bb_favorites_list } from "./main_elements/bb_favorites_list"
 import { bb_detailed_display } from "./main_elements/bb_detailed_display"
 
 
-class bear_bank_main extends HTMLElement {
+class beer_bank_main extends HTMLElement {
 
     constructor() {
         super();
@@ -23,4 +23,4 @@ class bear_bank_main extends HTMLElement {
     }
 }
 
-customElements.define("bear-bank-main", bear_bank_main);
+customElements.define("beer-bank-main", beer_bank_main);
