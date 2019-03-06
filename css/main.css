@@ -42,7 +42,7 @@ input {
     border-color: #f7ddc4;
 }
 
-bear-bank-main {
+beer-bank-main {
     display: grid;
     grid-template-rows: 0.38fr 1fr;
     height: 100%;
