@@ -85,7 +85,8 @@ export class bb_main_list_container extends HTMLElement {
             this.get_initial_list_of_20_items();
         }
     }
-
+    
+    // Checks if inputs are empty and restores initial list of items, or performs the search.
     handle_advanced_search_action(event) {
         if (event.detail.beer_name === '' &&
             event.detail.ibu_lt === '' &&

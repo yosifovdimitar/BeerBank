@@ -152,6 +152,7 @@ export class bb_item_element extends HTMLElement {
                     },
                     bubble: true, composed: true
                 }));
+                
         }
 
         this.dispatchEvent(new CustomEvent('bb-favorite-refresh',
