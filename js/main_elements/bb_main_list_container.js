@@ -33,6 +33,10 @@ export class bb_main_list_container extends HTMLElement {
                 this.handle_search_action(event);
                 break;
 
+            case 'advanced-search':
+                this.handle_advanced_search_action(event);
+                break;
+
             case 'favorite-button-clicked':
                 this.handle_favorite_button_clicked();
                 break;
@@ -65,9 +69,9 @@ export class bb_main_list_container extends HTMLElement {
 
     // Partially matches item names and populates the list.
     handle_search_action(event) {
-        if (event.detail.input_value !== '') {
+        if (event.detail.beer_name !== '') {
             this.search_mode = true;
-            fetch(`https://api.punkapi.com/v2/beers?beer_name=${event.detail.input_value.toString().toLowerCase().split(' ').join('_')}`)
+            fetch(`https://api.punkapi.com/v2/beers?beer_name=${event.detail.beer_name.toString().toLowerCase().split(' ').join('_')}`)
                 .then(function (response) {
                     return response.json();
                 })
@@ -80,6 +84,48 @@ export class bb_main_list_container extends HTMLElement {
             this.clear_the_list();
             this.get_initial_list_of_20_items();
         }
+    }
+
+    handle_advanced_search_action(event) {
+        if (event.detail.beer_name === '' &&
+            event.detail.ibu_lt === '' &&
+            event.detail.ibu_gt === '' &&
+            event.detail.abv_lt === '' &&
+            event.detail.abv_gt === '' &&
+            event.detail.ebc_lt === '' &&
+            event.detail.ebc_gt === '' &&
+            event.detail.brewed_before === '' &&
+            event.detail.brewed_after === '') {
+            this.search_mode = false;
+            this.clear_the_list();
+            this.get_initial_list_of_20_items();
+        } else {
+            this.search_mode = true;
+            fetch(`https://api.punkapi.com/v2/beers?${this.compose_advanced_query(event)}`)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (myJson) {
+                    this.clear_the_list();
+                    this.populate_list(myJson);
+                }.bind(this));
+        }
+    }
+
+    compose_advanced_query(event) {
+        let event_data = event.detail;
+        let composed_query = new String();
+
+        for(let key in event_data) {
+            if (event_data[key] !== "" && key !== "action") {
+                if(key === "beer_name") {
+                    composed_query += `${key}=${event_data[key].toString().toLowerCase().split(' ').join('_')}&`;
+                } else {
+                composed_query += `${key}=${event_data[key]}&`;
+                }
+            }
+        }
+        return composed_query.slice(0, -1);
     }
 
     get_initial_list_of_20_items() {
@@ -128,7 +174,7 @@ export class bb_main_list_container extends HTMLElement {
             new_element.setAttribute("ibu", element.ibu);
             new_element.setAttribute("abv", element.abv);
             new_element.setAttribute("ebc", element.ebc);
-        
+
             this.list_elements.appendChild(new_element);
         });
     }

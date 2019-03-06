@@ -15,7 +15,7 @@ body {
 }
 
 .hide-item {
-    display: none;
+    display: none !important;
 }
 
 .show-item {
@@ -26,9 +26,20 @@ body {
     display: grid;
 }
 
+.show-item-flex {
+    display: flex;
+}
+
 
 input {
-    font-size: 2vmin;
+    justify-self: center;
+    font-size: 1.2vmax;
+    text-align: end;
+    width: 9vmax;
+    height: 3vh;
+    border-width: 0.4vmin;
+    border-style: solid;
+    border-color: #f7ddc4;
 }
 
 bear-bank-main {
@@ -45,7 +56,7 @@ bb-main-header {
     z-index: 0;
 
     display: grid;
-    grid-template-rows: min-content 0.12fr repeat(2, min-content);
+    grid-template-rows: min-content 0.12fr repeat(3, min-content);
     grid-gap: 1vmin;
 }
 
@@ -100,7 +111,11 @@ bb-item-element:hover {
 
 .bb-detailed-item-tagline {
     grid-row: 2;
-    font-size: 2.6vmin;
+    font-size: 1.3vmax;
+}
+
+.bb-detailed-advanced-params {
+    grid-row: 1;
 }
 
 .bb-detailed-separator-line {
@@ -113,52 +128,58 @@ bb-item-element:hover {
 .bb-item-specifics {
     display: grid;
     grid-row: 4;
-    grid-template-columns: repeat(3, max-content);
-    grid-gap: 2vmax;
+    grid-template-columns: repeat(3, min-content);
+    grid-gap: 1vw;
     font-weight: bold;
-    font-size: 2.3vmin;
+    font-size: 1.3vmax;
 }
 
 .bb-detailed-item-description {
     grid-row: 5;
-    font-size: 2.3vmin;
+    font-size: 1.3vmax;
 }
 
 .bb-best-served-with {
     grid-row: 6;
     color: #7a7a7a;
     font-weight: bold;
-    font-size: 2.5vmin;
+    font-size: 1.4vmax;
 }
 
 .bb-item-ibu-container {
+    display: grid;
     grid-column: 1;
     color: #7a7a7a;
 }
 
 .bb-detailed-item-ibu {
+    grid-row: 1;
     float: right;
     font-weight: normal;
     color: #b9bbc2;
 }
 
 .bb-item-abv-container {
+    display: grid;
     grid-column: 2;
     color: #7a7a7a;
 }
 
 .bb-detailed-item-abv {
+    grid-row: 1;
     float: right;
     font-weight: normal;
     color: #b9bbc2;
 }
 
 .bb-item-ebc-container {
+    display: grid;
     grid-column: 3;
     color: #7a7a7a;
 }
 
 .bb-detailed-item-ebc {
+    grid-row: 1;
     float: right;
     font-weight: normal;
     color: #b9bbc2;
@@ -209,14 +230,14 @@ bb-item-element:hover {
     grid-row: 1;
     color: #f79400;
     font-weight: bold;
-    font-size: 3.5vmin;
+    font-size: 1.7vmax;
 }
 
 .bb-detailed-item-food-pairing {
     grid-column: 2;
     grid-row: 7;
     padding-left: 6vmin;
-    font-size: 2.3vmin;
+    font-size: 1.3vmax;
 }
 
 .bb-you-might-also-like {
@@ -384,10 +405,56 @@ bb-item-element:hover {
     grid-row: 5;
     justify-self: center;
     font-size: 1.2vmax;
+    text-align: start;
     width: 33vw;
     height: 5vh;
     padding-left: 0.7vmin;
     border-width: 0.4vmin;
     border-style: solid;
     border-color: #f7ddc4;
+}
+
+.bb-advanced-search {
+    grid-row: 6;
+    color: white;
+    justify-self: center;
+    font-size: 1vmax;
+    cursor: pointer;
+    user-select: none;
+}
+
+.bb-advanced-inputs-container {
+    grid-row: 7;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.bb-input-container {
+    padding: 1vmin;
+    display: grid;
+}
+
+.bb-advanced-input-text {
+    color: white;
+    font-size: 1.3vmax;
+    text-align: center;
+}
+
+.bb-year-before-input {
+    width: 14vmax;
+}
+
+.bb-year-after-input {
+    width: 14vmax;
+}
+
+.bb-clear-values-container {
+    justify-self: center;
+    grid-row: 8;
+    color: white;
+    font-size: 1.3vmax;
+    padding-bottom: 1vmin;
+    cursor: pointer;
+    user-select: none;
 }

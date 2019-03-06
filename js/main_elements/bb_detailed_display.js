@@ -105,9 +105,9 @@ export class bb_detailed_display extends HTMLElement {
         <div id="item-tagline" class="bb-detailed-item-tagline"></div>
         <div class="bb-detailed-separator-line"></div>
         <div class="bb-item-specifics">
-        <div class="bb-item-ibu-container">IBU:&nbsp;<div id="item-ibu" class="bb-detailed-item-ibu"></div></div>
-        <div class="bb-item-abv-container">ABV:&nbsp; <div id="item-abv" class="bb-detailed-item-abv"></div></div>
-        <div class="bb-item-ebc-container">EBC:&nbsp;<div id="item-ebc" class="bb-detailed-item-ebc"></div></div>
+        <div class="bb-item-ibu-container"><div class="bb-detailed-advanced-params">IBU:&nbsp;</div><div id="item-ibu" class="bb-detailed-item-ibu"></div></div>
+        <div class="bb-item-abv-container"><div class="bb-detailed-advanced-params">ABV:&nbsp;</div><div id="item-abv" class="bb-detailed-item-abv"></div></div>
+        <div class="bb-item-ebc-container"><div class="bb-detailed-advanced-params">EBC:&nbsp;</div><div id="item-ebc" class="bb-detailed-item-ebc"></div></div>
         </div>
         <div id="item-description" class="bb-detailed-item-description"></div>
         <div class="detailed-display-photo-container">
