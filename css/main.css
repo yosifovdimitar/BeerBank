@@ -54,10 +54,9 @@ bb-main-header {
     border-bottom: #f7ddc4;
     border-bottom-style: inset;
     z-index: 0;
-
     display: grid;
-    grid-template-rows: min-content 0.12fr repeat(3, min-content);
-    grid-gap: 1vmin;
+    grid-template-rows: repeat(6, min-content);
+    grid-gap: 0.3vmin;
 }
 
 bb-main-list-container {
@@ -136,14 +135,14 @@ bb-item-element:hover {
 
 .bb-detailed-item-description {
     grid-row: 5;
-    font-size: 1.3vmax;
+    font-size: 1.4vmax;
 }
 
 .bb-best-served-with {
     grid-row: 6;
     color: #7a7a7a;
     font-weight: bold;
-    font-size: 1.4vmax;
+    font-size: 1.5vmax;
 }
 
 .bb-item-ibu-container {
@@ -230,14 +229,14 @@ bb-item-element:hover {
     grid-row: 1;
     color: #f79400;
     font-weight: bold;
-    font-size: 1.7vmax;
+    font-size: 1.8vmax;
 }
 
 .bb-detailed-item-food-pairing {
     grid-column: 2;
     grid-row: 7;
     padding-left: 6vmin;
-    font-size: 1.3vmax;
+    font-size: 1.4vmax;
 }
 
 .bb-you-might-also-like {
@@ -399,6 +398,7 @@ bb-item-element:hover {
     justify-self: center;
     color: white;
     font-size: 2vmin;
+    padding-bottom: 0.2vmax;
 }
 
 .bb-search-bar-input {
@@ -407,7 +407,7 @@ bb-item-element:hover {
     font-size: 1.2vmax;
     text-align: start;
     width: 33vw;
-    height: 5vh;
+    height: 3.7vmax;
     padding-left: 0.7vmin;
     border-width: 0.4vmin;
     border-style: solid;
@@ -418,9 +418,12 @@ bb-item-element:hover {
     grid-row: 6;
     color: white;
     justify-self: center;
-    font-size: 1vmax;
+    align-self: center;
+    font-size: 1.4vmax;
     cursor: pointer;
     user-select: none;
+    padding-top: 1.5vmax;
+    padding-bottom: 0.2vmax;
 }
 
 .bb-advanced-inputs-container {
@@ -431,7 +434,8 @@ bb-item-element:hover {
 }
 
 .bb-input-container {
-    padding: 1vmin;
+    padding-left: 1vmin;
+    padding-right: 1vmin;
     display: grid;
 }
 
@@ -451,10 +455,11 @@ bb-item-element:hover {
 
 .bb-clear-values-container {
     justify-self: center;
+    align-self: center;
     grid-row: 8;
     color: white;
-    font-size: 1.3vmax;
-    padding-bottom: 1vmin;
+    font-size: 1.4vmax;
+    padding: 0.5vmax;
     cursor: pointer;
     user-select: none;
 }
