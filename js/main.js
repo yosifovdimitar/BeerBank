@@ -4,7 +4,7 @@ import { bb_favorites_list } from "./main_elements/bb_favorites_list"
 import { bb_detailed_display } from "./main_elements/bb_detailed_display"
 
 
-class beer_bank_main extends HTMLElement {
+export class beer_bank_main extends HTMLElement {
 
     constructor() {
         super();
