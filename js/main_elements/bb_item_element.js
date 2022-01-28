@@ -22,8 +22,8 @@ export class bb_item_element extends HTMLElement {
         this.item_abv = this.getAttribute('abv');
         this.item_ebc = this.getAttribute('ebc');
 
-        // Used to determine how clicking on the item behaves, if the items is a recommendation.
-        this.item_mode = this.getAttribute('mode');
+        // Used to determine how clicking on the item behaves, if the item is a recommendation.
+        this.item_mode = this.getAttribute('item-mode');
 
         this.item_selected = false;
 
@@ -34,7 +34,7 @@ export class bb_item_element extends HTMLElement {
         this.querySelector("#element-photo").setAttributeNS('http://www.w3.org/1999/xlink', 'href', this.item_image);
         this.querySelector("#element-name").innerHTML = this.item_name;
         this.querySelector("#element-tagline").innerHTML = this.item_tagline;
-        this.querySelector("#element-favorite-button").addEventListener("pointerdown", event => this.favorite_button_clicked());
+        this.querySelector("#svg-star").addEventListener("pointerdown", event => this.favorite_button_clicked());
         this.querySelector("#element-container").addEventListener("pointerdown", event => this.element_clicked());
     }
 
@@ -74,6 +74,7 @@ export class bb_item_element extends HTMLElement {
 
     // Highlights the item and displays detailed view.
     element_clicked() {
+        console.log(this.item_mode);
         // Checks if item is a recommendation and disables detailed display.
         if(this.item_mode !== "recommendation") {
         this.dispatchEvent(new CustomEvent('bb-item-highlight',
@@ -101,6 +102,34 @@ export class bb_item_element extends HTMLElement {
                 },
                 bubble: true, composed: true
             }));
+        } else {
+            this.dispatchEvent(new CustomEvent('bb-item-highlight',
+            {
+                detail: {
+                    item_id: this.item_id,
+                    action: "element-clicked"
+                },
+                bubble: true, composed: true
+            }));
+
+            this.dispatchEvent(new CustomEvent('bb-detailed-display',
+            {
+                detail: {
+                    item_id: this.item_id,
+                    item_name: this.item_name,
+                    item_tagline: this.item_tagline,
+                    item_description: this.item_description,
+                    item_food_pairing: this.item_food_pairing,
+                    item_image: this.item_image,
+                    item_ibu: this.item_ibu,
+                    item_abv: this.item_abv,
+                    item_ebc: this.item_ebc,
+                    action: "element-clicked",
+                    item_mode: "recommendation"
+                },
+                bubble: true, composed: true
+            }));
+
         }
     }
 
@@ -166,13 +195,12 @@ export class bb_item_element extends HTMLElement {
 
     // Composes the HTML.
     html_constructor() {
-        return `
-        ${this.html_favorite_button()}
-        <div id="element-container" class="bb-element-container">
+        return `<div id="element-container" class="bb-element-container">
         ${this.html_element_photo()}
         ${this.html_element_name()}
         ${this.html_element_tagline()}
-        </div>`;
+        </div>
+        ${this.html_favorite_button()}`;
     }
 
     html_favorite_button() {

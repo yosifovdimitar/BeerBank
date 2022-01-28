@@ -272,6 +272,7 @@ bb-item-element:hover {
     stroke: black;
     fill: white;
     stroke-width: 2%;
+    cursor: pointer;
 }
 
 .bb-svg-star-selected {
@@ -280,6 +281,7 @@ bb-item-element:hover {
     stroke: #f79400;
     fill: #f79400;
     stroke-width: 2%;
+    cursor: pointer;
 }
 
 .bb-svg-star:hover {
@@ -291,7 +293,6 @@ bb-item-element:hover {
     grid-column: 2;
     font-size: 1.6vmax;
     padding-right: 0.6vmax;
-    cursor: pointer;
     user-select: none;
     justify-self: self-end;
 }

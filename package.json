@@ -2,7 +2,7 @@
   "devDependencies": {
     "rollup": "^0.56.3",
     "rollup-plugin-commonjs": "^8.2.1",
-    "rollup-plugin-node-resolve": "^3.0.3",
-    "rollup-plugin-minify-es": "^1.1.1"
+    "rollup-plugin-minify-es": "^1.1.1",
+    "rollup-plugin-node-resolve": "^3.0.3"
   }
 }

@@ -25,20 +25,24 @@ export class bb_detailed_display extends HTMLElement {
     display_item_details(event) {
         if (this.display_status === "hidden") {
             this.show_element();
-        } else {
-            this.hide_element();
         }
 
         this.querySelector("#item-name").innerHTML = event.detail.item_name;
         this.querySelector("#item-description").innerHTML = event.detail.item_description;
         this.querySelector("#item-tagline").innerHTML = event.detail.item_tagline;
+        // Prevents renewal of recommendations list if the item clicked is from that list.
+        if(event.detail.item_mode !== "recommendation"){
         this.querySelector("#item-food-pairing").appendChild(this.create_list(event.detail.item_food_pairing));
+        }
         this.querySelector("#element-photo").setAttributeNS('http://www.w3.org/1999/xlink', 'href', event.detail.item_image);
         this.querySelector("#item-ibu").innerHTML = event.detail.item_ibu;
         this.querySelector("#item-abv").innerHTML = event.detail.item_abv + "%";
         this.querySelector("#item-ebc").innerHTML = event.detail.item_ebc;
-
+        
+        // Prevents renewal of recommendations list if the item clicked is from that list.
+        if(event.detail.item_mode !== "recommendation"){
         this.provide_recommendations(event.detail.item_ebc);
+        }
     }
 
     // Creates unordered list with proposed foods.
@@ -78,7 +82,7 @@ export class bb_detailed_display extends HTMLElement {
             new_element.setAttribute("ibu", element.ibu);
             new_element.setAttribute("abv", element.abv);
             new_element.setAttribute("ebc", element.ebc);
-            new_element.setAttribute("mode", "recommendation");
+            new_element.setAttribute("item-mode", "recommendation");
         
             this.list_recommendations.appendChild(new_element);
         });
